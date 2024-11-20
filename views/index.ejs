@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .mainsection{
+            background-color: rgba(239, 236, 229, 0.219);
+            backdrop-filter: blur(14px);
+            border: 0.01px solid white;
+            padding: 10px;
+            height: 90%;
+            width: 80%;
+            border-radius: 15px;
+        }
+        section{
+            width: 100%;
+        }
+        html,body{
+            height: 100%;
+            width: 100%;
+            background-color: rgb(101, 99, 99);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            padding: 21px;
+        }
+        .topsection h1{
+            display: block;
+            font-size: 2rem;
+            color: violet;
+            font-weight: bolder;
+            text-align: center;
+        }
+        .inputdiv{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .titleinput,textarea{
+            margin: 0 auto;
+            display: block;
+            width: 85%;
+            padding: 15px 21px;
+            font-size: 1.4rem;            
+            color: blue;
+            background-color: rgb(56, 53, 53);
+            border-radius: 15px;
+            border-style: none;
+            outline: none;
+        }
+        textarea{
+            color: wheat;
+        }
+        .sbmt{
+            padding: 10px 34px;
+            background-color: rgb(44, 44, 147);
+            color: black;
+            font-size: 1.4rem;
+            align-self: center;
+            border-radius: 15px;
+            border-style: none;
+        }
+        .sbmt:hover{
+            background-color: blueviolet;
+            color: white;
+        }
+        .allnotes{
+            padding: 21px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: space-around;
+        }
+        .allnotes div{
+            background-color: rgba(0, 0, 255, 0.121);
+            padding: 15px 21px;
+            border-radius: 15px;
+            border: 0.4px solid rgba(255, 255, 255, 0.265);
+            backdrop-filter: blur(15px);
+        }
+        .allnotes div h1{
+            color: rgb(188, 182, 169);
+            margin-bottom: 10px;
+        }
+        .allnotes div a{
+            text-decoration: none;
+        }
+        .allnotes div a p{
+            color: white;
+            background-color: blueviolet;
+            border-radius: 10px;
+            padding: 5px 10px;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: bolder;
+        }
+        .allnotes div a p:hover{
+            background-color: wheat;
+            color: blue;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+
+    <section class="mainsection">
+        <section class="topsection">
+            <h1>Notes !</h1>
+            <form action="/create" method="post">
+                <div class="inputdiv">
+                    <input class="titleinput" type="text" name="notetitle" placeholder="Enter title">
+                    <textarea name="notedata" id="" placeholder="Enter anything"></textarea>
+                    <input class="sbmt" type="submit">
+                </div>
+                    
+            </form>
+        </section>
+        <section class="allnotes">
+    
+    
+    
+            <% if(files.length > 0){ %>
+    
+                <% files.forEach( function(val){ %>
+                    <div>
+                        <h1><%= val %></h1>
+                    <a href="/file/<%= val %>"><p>Read</p></a>
+                    </div>
+                    <%  }) %>
+    
+           <% } else { %>
+            <h1>No notes.</h1>
+          <% } %>
+            
+        </section>
+    </section>
+</body>
+</html>
